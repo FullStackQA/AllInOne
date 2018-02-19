@@ -1,6 +1,6 @@
-#To be done
+# To be done
 
-###For now:
+
 **Prerequisites**
 - Docker
 - Java - 8
