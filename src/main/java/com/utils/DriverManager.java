@@ -26,6 +26,8 @@ import static com.utils.PropertyReader.getPropertyValue;
 public  class DriverManager {
     private static WebDriver driver;
     private static final String CHROME = "chrome";
+    static String sFileName = "target/harTest.har";
+    public static BrowserMobProxy proxy;
 
 
     public static String browserName = getPropertyValue("browser");
@@ -61,15 +63,27 @@ public  class DriverManager {
 
 
     public static void tearDown() {
+        Har har = proxy.getHar();
+
+        // Write HAR Data in a File
+        File harFile = new File(sFileName);
+        try {
+            har.writeTo(harFile);
+        } catch (IOException ex) {
+            System.out.println (ex.toString());
+            System.out.println("Could not find file " + sFileName);
+        }
+
         if (driver != null) {
         driver.quit();
-        driver = null;
+            driver = null;
         }
     }
     public static WebDriver createChromeDriver(boolean clearCache) {
         if (PlatformUtil.isMac()) {
             System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver");
         }
+
         DesiredCapabilities capabilities= HarGenerator.desiredCapabilities();
         WebDriver driver =  new ChromeDriver(capabilities);
         driver.manage().timeouts().implicitlyWait(Integer.parseInt(getPropertyValue("timeout")), TimeUnit.SECONDS);
