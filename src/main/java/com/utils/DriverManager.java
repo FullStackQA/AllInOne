@@ -2,14 +2,22 @@ package com.utils;
 
 
 import com.sun.javafx.PlatformUtil;
+import net.lightbody.bmp.BrowserMobProxy;
+import net.lightbody.bmp.BrowserMobProxyServer;
+import net.lightbody.bmp.client.ClientUtil;
+import net.lightbody.bmp.core.har.Har;
+import net.lightbody.bmp.proxy.CaptureType;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterTest;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
@@ -18,6 +26,7 @@ import static com.utils.PropertyReader.getPropertyValue;
 public  class DriverManager {
     private static WebDriver driver;
     private static final String CHROME = "chrome";
+
 
     public static String browserName = getPropertyValue("browser");
     public static boolean cleanCache = Boolean.parseBoolean(getPropertyValue("clearcache"));
@@ -53,23 +62,16 @@ public  class DriverManager {
 
     public static void tearDown() {
         if (driver != null) {
-            driver.quit();
-            driver = null;
+        driver.quit();
+        driver = null;
         }
     }
-    private static WebDriver createChromeDriver(boolean clearCache) {
+    public static WebDriver createChromeDriver(boolean clearCache) {
         if (PlatformUtil.isMac()) {
             System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver");
         }
-        ChromeOptions capabilities = new ChromeOptions();
-        ChromeOptions opts = new ChromeOptions();
-        if (clearCache) {
-            opts.addArguments("--incognito");
-        }
-        opts.addArguments("disable-extensions");
-        opts.addArguments("--start-maximized");
-        capabilities.setCapability(ChromeOptions.CAPABILITY, opts);
-        WebDriver driver =  new ChromeDriver(opts);
+        DesiredCapabilities capabilities= HarGenerator.desiredCapabilities();
+        WebDriver driver =  new ChromeDriver(capabilities);
         driver.manage().timeouts().implicitlyWait(Integer.parseInt(getPropertyValue("timeout")), TimeUnit.SECONDS);
         if (clearCache) {
             driver.get("chrome://extensions-frame");
