@@ -111,6 +111,33 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>br.com.softplan.security.zap</groupId>
+                <artifactId>zap-maven-plugin</artifactId>
+                <version>1.2.1-0</version>
+                <configuration>
+                    <zapPort>8090</zapPort>
+					<targetUrl>http://localhost:3000</targetUrl>
+                    <apiKey>idnrk07pmpau48rog2tcoke0qi</apiKey>
+					<zapPath>Applications/OWASPZAP.app/Contents/Java</zapPath>
+                    <activeScanStartingPointUrl>http://localhost:3000</activeScanStartingPointUrl>
+                    <shouldStartNewSession>false</shouldStartNewSession>
+                    <zapSleep>5000</zapSleep>
+                    <spiderURL>true</spiderURL>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>start-zap</id>
+                        <phase>pre-integration-test</phase>
+                        <goals><goal>startZap</goal></goals>
+                    </execution>
+                    <execution>
+                        <id>selenium-analyze</id>
+                        <phase>post-integration-test</phase>
+                        <goals><goal>seleniumAnalyze</goal></goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
