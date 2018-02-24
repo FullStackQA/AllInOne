@@ -31,6 +31,9 @@ public class LoginPage extends Page{
             click(logInButton);
         }
 
+        public String getPageUrl(){
+           return driver.getCurrentUrl();
+        }
 
 
     }

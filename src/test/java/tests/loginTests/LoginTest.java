@@ -16,6 +16,7 @@ public class LoginTest extends BaseTest {
     public void LoginTest() throws InterruptedException {
         LoginSteps steps=new LoginSteps();
         steps.Login(getPropertyValue("username"),getPropertyValue("password"));
+
     }
     @AfterClass
     public void tearDown() throws IOException {

@@ -5,6 +5,8 @@ import pages.LoginPage;
 import  org.testng.Assert;
 import pages.UserHomePage;
 
+import static zap.ZapHelpers.ScanUrl;
+
 public class LoginSteps {
 
 
@@ -19,6 +21,8 @@ public class LoginSteps {
         loginPage.clickSubmit();
        String actualUserName= userHomePage.getUserNameOnScreen();
         Assert.assertEquals( userNameActual,actualUserName);
+        ScanUrl(loginPage.getPageUrl());
+
     }
 
 

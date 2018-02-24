@@ -9,4 +9,5 @@
 **To run the tests**
 - Pull juice shop using docker: ```docker pull bkimminich/juice-shop```
 - Run juice shop using ```docker run --rm -p 3000:3000 bkimminich/juice-shop```
+- Run zap in daemon mode ``````
 - Run the tests using ```mvn clean test```
