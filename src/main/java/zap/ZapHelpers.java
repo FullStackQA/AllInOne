@@ -17,29 +17,28 @@ public class ZapHelpers {
             // Start spidering the target
             System.out.println("Spider : " + TARGET);
             // It's not necessary to pass the ZAP API key again, already set when creating the ClientApi.
-            ApiResponse resp = api.spider.scan(TARGET, null, null, null, null);
+            //ApiResponse resp = api.spider.scan(TARGET, null, null, null, null);
             String scanid;
             int progress;
 
-            // The scan now returns a scan id to support concurrent scanning
-            scanid = ((ApiResponseElement) resp).getValue();
-
-            // Poll the status until it completes
-            while (true) {
-                Thread.sleep(1000);
-                progress = Integer.parseInt(((ApiResponseElement) api.spider.status(scanid)).getValue());
-                System.out.println("Spider progress : " + progress + "%");
-                if (progress >= 100) {
-                    break;
-                }
-            }
-            System.out.println("Spider complete");
+//            // The scan now returns a scan id to support concurrent scanning
+//            scanid = ((ApiResponseElement) resp).getValue();
+//
+//            // Poll the status until it completes
+//            while (true) {
+//                Thread.sleep(10000);
+//                progress = Integer.parseInt(((ApiResponseElement) api.spider.status(scanid)).getValue());
+//                System.out.println("Spider progress : " + progress + "%");
+//                    break;
+//                }
+//            }
+//            System.out.println("Spider complete");
 
             // Give the passive scanner a chance to complete
             Thread.sleep(2000);
 
             System.out.println("Active scan : " + TARGET);
-            resp = api.ascan.scan(TARGET, "True", "False", null, null, null);
+            ApiResponse resp = api.ascan.scan(TARGET, "False", "True", null, null, null);
 
             // The scan now returns a scan id to support concurrent scanning
             scanid = ((ApiResponseElement) resp).getValue();

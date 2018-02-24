@@ -19,7 +19,7 @@ public class LoginSteps {
         loginPage.enterUsername(userName);
         loginPage.enterPassword(password);
         loginPage.clickSubmit();
-       String actualUserName= userHomePage.getUserNameOnScreen();
+        String actualUserName= userHomePage.getUserNameOnScreen();
         Assert.assertEquals( userNameActual,actualUserName);
         ScanUrl(loginPage.getPageUrl());
 
