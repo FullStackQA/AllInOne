@@ -63,17 +63,6 @@ public  class DriverManager {
 
 
     public static void tearDown() {
-        Har har = proxy.getHar();
-
-        // Write HAR Data in a File
-        File harFile = new File(sFileName);
-        try {
-            har.writeTo(harFile);
-        } catch (IOException ex) {
-            System.out.println (ex.toString());
-            System.out.println("Could not find file " + sFileName);
-        }
-
         if (driver != null) {
         driver.quit();
             driver = null;
@@ -84,7 +73,10 @@ public  class DriverManager {
             System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver");
         }
 
-        DesiredCapabilities capabilities= HarGenerator.desiredCapabilities();
+        Proxy proxy = new Proxy();
+        proxy.setHttpProxy("localhost:8090");
+        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+        capabilities.setCapability("proxy", proxy);
         WebDriver driver =  new ChromeDriver(capabilities);
         driver.manage().timeouts().implicitlyWait(Integer.parseInt(getPropertyValue("timeout")), TimeUnit.SECONDS);
         if (clearCache) {

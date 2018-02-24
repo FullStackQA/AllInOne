@@ -19,6 +19,6 @@ public class LoginTest extends BaseTest {
     }
     @AfterClass
     public void tearDown() throws IOException {
-        HarGenerator.harFileGenerator(this.getClass().getSimpleName());
+//        HarGenerator.harFileGenerator(this.getClass().getSimpleName());
     }
 }
