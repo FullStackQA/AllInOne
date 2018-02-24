@@ -17,8 +17,8 @@ public class BaseTest {
         driver.get(getPropertyValue("URL"));
     }
 
-    // @AfterSuite
-    // public void closeBrowser() throws InterruptedException {
-    //     DriverManager.tearDown();
-    // }
+    @AfterSuite
+    public void closeBrowser() throws InterruptedException {
+        //DriverManager.tearDown();
+    }
 }
