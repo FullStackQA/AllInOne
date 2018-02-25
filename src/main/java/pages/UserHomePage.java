@@ -12,9 +12,12 @@ public class UserHomePage extends Page {
 
     @FindBy(css= "svg[data-icon=\"user-circle\"]")
     WebElement userIcon;
+    
+    @FindBy(css = ".ribbon-spacer")
+    WebElement AboutButton;
 
-
-
+    @FindBy(css= "svg[data-icon=\"comment\"]")
+    WebElement ContactUsButton;
 
     public String getUserNameOnScreen()
     {
