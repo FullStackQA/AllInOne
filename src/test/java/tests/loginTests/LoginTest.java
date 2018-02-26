@@ -1,6 +1,5 @@
 package tests.loginTests;
 
-import com.utils.HarGenerator;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 import steps.LoginSteps;
@@ -8,7 +7,7 @@ import tests.BaseTest;
 
 import java.io.IOException;
 
-import static com.utils.PropertyReader.getPropertyValue;
+import static com.utilities.PropertyReader.getPropertyValue;
 
 public class LoginTest extends BaseTest {
 

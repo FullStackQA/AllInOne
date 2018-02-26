@@ -22,7 +22,7 @@ public class LoginSteps {
         loginPage.clickSubmit();
         String actualUserName= userHomePage.getUserNameOnScreen();
         Assert.assertEquals( userNameActual,actualUserName);
-        aScanUrl(loginPage.getPageUrl());
+        aScanUrl(loginPage.getPageUrl(),"ReportForLoginPage");
 
     }
 

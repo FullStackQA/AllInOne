@@ -1,11 +1,11 @@
 package tests;
 
-import com.utils.DriverManager;
+import com.utilities.DriverManager;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
-import static com.utils.PropertyReader.getPropertyValue;
+import static com.utilities.PropertyReader.getPropertyValue;
 
 public class BaseTest {
 

@@ -1,4 +1,4 @@
-package com.utils.exceptions;
+package com.utilities.exceptions;
 
 public class PageNotReadyException extends RuntimeException {
     public PageNotReadyException(Object o, String context) {

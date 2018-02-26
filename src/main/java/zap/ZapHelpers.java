@@ -1,14 +1,10 @@
 package zap;
 
-import com.sun.javafx.binding.StringFormatter;
 import org.zaproxy.clientapi.core.*;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
-
-import static com.utils.ReportGenerator.saveReport;
+import static com.utilities.ReportGenerator.saveReport;
 
 public class ZapHelpers {
     public static String ZAP_ADDRESS= "localhost";
@@ -17,7 +13,7 @@ public class ZapHelpers {
 //    public static final String TARGET = "http://localhost:3000";
 
 
-    public  static void aScanUrl(String TARGET)  {
+    public  static void aScanUrl(String TARGET,String newFile)  {
         ClientApi api = new ClientApi(ZAP_ADDRESS, ZAP_PORT, ZAP_API_KEY);
         List urls=new ArrayList();
        try{
@@ -71,7 +67,7 @@ public class ZapHelpers {
             System.out.println("################JSON report####################");
             System.out.println(new String(api.core.jsonreport()).toString());
 
-            String newFile="report";
+
             String content=new String(api.core.htmlreport());
             saveReport(newFile,content);
 

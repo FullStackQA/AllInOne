@@ -1,4 +1,4 @@
-package com.utils.exceptions;
+package com.utilities.exceptions;
 
 public class ElementNotFoundException extends RuntimeException {
     public ElementNotFoundException(String context, Integer durationInSeconds) {

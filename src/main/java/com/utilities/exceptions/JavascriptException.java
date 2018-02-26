@@ -1,4 +1,4 @@
-package com.utils.exceptions;
+package com.utilities.exceptions;
 
 public class JavascriptException extends RuntimeException {
     public JavascriptException(String context) {

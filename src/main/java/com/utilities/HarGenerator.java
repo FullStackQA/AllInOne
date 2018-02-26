@@ -1,4 +1,4 @@
-package com.utils;
+package com.utilities;
 
 import net.lightbody.bmp.BrowserMobProxy;
 import net.lightbody.bmp.BrowserMobProxyServer;

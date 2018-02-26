@@ -1,4 +1,4 @@
-package com.utils.exceptions;
+package com.utilities.exceptions;
 
 public class ElementNotVisibleException extends RuntimeException {
     public ElementNotVisibleException(String item, int durationInSeconds) {

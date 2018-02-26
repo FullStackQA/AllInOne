@@ -2,11 +2,11 @@ package pages;
 
 
 import com.google.common.base.Function;
-import com.utils.DriverManager;
-import com.utils.Timeout;
-import com.utils.exceptions.ElementNotFoundException;
-import com.utils.exceptions.ElementVisibleException;
-import com.utils.exceptions.PageNotReadyException;
+import com.utilities.DriverManager;
+import com.utilities.Timeout;
+import com.utilities.exceptions.ElementNotFoundException;
+import com.utilities.exceptions.ElementVisibleException;
+import com.utilities.exceptions.PageNotReadyException;
 import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.interactions.Actions;
