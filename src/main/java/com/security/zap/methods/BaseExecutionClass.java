@@ -8,8 +8,7 @@ package com.security.zap.methods;
         import com.security.zap.api.report.ZapReport;
         import com.security.zap.api.report.ZapReportUtil;
         import com.security.zap.utils.ZapInfo;
-
-
+        import com.security.zap.utils.boot.Zap;
 
 
 /**
@@ -282,6 +281,10 @@ private int port;
         }
 
         doExecute();
+    }
+
+    public void startZap(ZapInfo zapInfo)  {
+        Zap.startZap(zapInfo);
     }
 
     public abstract void doExecute();

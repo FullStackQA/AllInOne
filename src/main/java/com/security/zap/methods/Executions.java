@@ -7,7 +7,7 @@ import com.security.zap.api.report.ZapReport;
 import com.security.zap.utils.ZapInfo;
 import com.security.zap.utils.boot.Zap;
 
-import static com.security.zap.api.report.ZapReportUtil.saveReport;
+
 
 public class Executions extends  BaseExecutionClass {
 
@@ -21,7 +21,7 @@ public class Executions extends  BaseExecutionClass {
 
         ZapClient zapClient = new ZapClient(zapInfo, authenticationInfo);
         try {
-            Zap.startZap(zapInfo);
+            startZap(zapInfo);
             ZapReport zapReport = zapClient.analyze(analysisInfo);
             saveReport(zapReport);
         } finally {
