@@ -79,12 +79,11 @@ public abstract class BaseAnalyzer implements Analyzer {
 		LOGGER.info("{} : {}", ScanType.ACTIVE_SCAN, targetUrl);
 
 		try {
-			ApiResponse resp = api.ascan.scan(apiKey, targetUrl, "True", "True", "", "", "");
+			ApiResponse resp = api.ascan.scan( targetUrl, "True", "True", "", "", "");
 			String scanId = ((ApiResponseElement) resp).getValue();
 
 			waitForScanToFinish(scanId, ScanType.ACTIVE_SCAN);
 		} catch (ClientApiException e) {
-			// TODO: rever essa estratégia de tratamento
 			String message = "Error running Active Scan.";
 			if (e.getCause() instanceof SAXParseException || e.getCause() instanceof com.sun.org.apache.xerces.internal.impl.io.MalformedByteSequenceException
 					|| e.getMessage().contains("URL Not Found in the Scan Tree")) {
@@ -100,8 +99,8 @@ public abstract class BaseAnalyzer implements Analyzer {
 		ZapReport zapReport = null;
 
 		try {
-			byte[] htmlReport = api.core.htmlreport(apiKey);
-			byte[] xmlReport = api.core.xmlreport(apiKey);
+			byte[] htmlReport = api.core.htmlreport ();
+			byte[] xmlReport = api.core.xmlreport();
 			List<String> spiderResults = getAndLogSpiderResults();
 			
 			zapReport = new ZapReport(htmlReport, xmlReport, spiderResults);
@@ -164,7 +163,7 @@ public abstract class BaseAnalyzer implements Analyzer {
 
 		if (scanTimeoutReached(scanId)) {
 			try {
-				api.spider.stop(apiKey, scanId);
+				api.spider.stop( scanId);
 				LOGGER.info("Spider STOPPED");
 			} catch (ClientApiException e) {
 				handleError("Error stopping Active Scan.", e);
@@ -188,7 +187,7 @@ public abstract class BaseAnalyzer implements Analyzer {
 
 		if (scanTimeoutReached(scanId)) {
 			try {
-				api.ajaxSpider.stop(scanId);
+				api.ajaxSpider.stop();
 				LOGGER.info("AJAX Spider STOPPED");
 			} catch (ClientApiException e) {
 				handleError("Error stopping Active Scan.", e);
