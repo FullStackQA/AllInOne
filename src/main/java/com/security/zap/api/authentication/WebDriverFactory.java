@@ -41,8 +41,10 @@ public final class WebDriverFactory {
 	    profile.setPreference("network.proxy.no_proxies_on", "");
 	    profile.setPreference("network.proxy.http", host);
 	    profile.setPreference("network.proxy.http_port", port);
-	    
-	    return new FirefoxDriver(profile);
+
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability(FirefoxDriver.PROFILE, profile);
+	    return new FirefoxDriver(capabilities);
 	}
 	
 	// Chrome support was dropped due to ChromeDriver being incompatible with the RemoteDriver version that PhantomJSDriver uses
