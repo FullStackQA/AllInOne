@@ -2,7 +2,6 @@ package com.utilities;
 
 
 import com.sun.javafx.PlatformUtil;
-import net.lightbody.bmp.BrowserMobProxy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
@@ -18,7 +17,6 @@ public  class DriverManager {
     private static WebDriver driver;
     private static final String CHROME = "chrome";
     static String sFileName = "target/harTest.har";
-    public static BrowserMobProxy proxy;
 
 
     public static String browserName = getPropertyValue("browser");
@@ -61,7 +59,7 @@ public  class DriverManager {
     }
     public static WebDriver createChromeDriver(boolean clearCache) {
         if (PlatformUtil.isMac()) {
-            System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver");
+            System.setProperty("webdriver.chrome.driver", "src/resources/drivers/chromedriver");
         }
 
         Proxy proxy = new Proxy();

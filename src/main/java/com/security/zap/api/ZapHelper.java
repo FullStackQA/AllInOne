@@ -1,12 +1,15 @@
 package com.security.zap.api;
 
-import java.util.Arrays;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.security.zap.api.exception.ZapClientException;
 import com.security.zap.api.model.AnalysisInfo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.zaproxy.clientapi.core.ApiResponse;
+import org.zaproxy.clientapi.core.ApiResponseElement;
+import org.zaproxy.clientapi.core.ClientApi;
+import org.zaproxy.clientapi.core.ClientApiException;
+
+import java.util.Arrays;
 
 
 public class ZapHelper {
