@@ -1,13 +1,9 @@
 package steps;
 
-import net.continuumsecurity.proxy.Spider;
-import org.zaproxy.clientapi.core.ClientApiException;
 import pages.HomePage;
 import pages.LoginPage;
-import  org.testng.Assert;
 import pages.UserHomePage;
-import zap.SpiderTest;
-
+import  org.testng.Assert;
 import static zap.ZapHelpers.aScanUrl;
 
 public class LoginSteps {
@@ -24,9 +20,7 @@ public class LoginSteps {
         loginPage.clickSubmit();
         String actualUserName= userHomePage.getUserNameOnScreen();
         Assert.assertEquals( userNameActual,actualUserName);
-        //aScanUrl(loginPage.getPageUrl(),"ReportForLoginPage");
-        System.out.print("Starting the Scan");
-        //SpiderTest.testSpider(loginPage.getPageUrl());
+        aScanUrl(loginPage.getPageUrl(),"ReportForLoginPage");
     }
 
 }
