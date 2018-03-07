@@ -41,10 +41,15 @@ public final class WebDriverFactory {
 	    profile.setPreference("network.proxy.no_proxies_on", "");
 	    profile.setPreference("network.proxy.http", host);
 	    profile.setPreference("network.proxy.http_port", port);
+<<<<<<< HEAD
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability(FirefoxDriver.PROFILE, profile);
 	    return new FirefoxDriver(capabilities);
+=======
+	    
+	    return new FirefoxDriver(profile);
+>>>>>>> parent of 4d72c4a... Added the fix
 	}
 	
 	// Chrome support was dropped due to ChromeDriver being incompatible with the RemoteDriver version that PhantomJSDriver uses

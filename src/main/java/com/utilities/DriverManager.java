@@ -61,7 +61,7 @@ public  class DriverManager {
     }
     public static WebDriver createChromeDriver(boolean clearCache) {
         if (PlatformUtil.isMac()) {
-            System.setProperty("webdriver.chrome.driver", "src/resources/drivers/chromedriver");
+            System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver");
         }
 
         Proxy proxy = new Proxy();

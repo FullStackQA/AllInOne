@@ -16,14 +16,14 @@ import org.zaproxy.clientapi.core.ClientApiException;
 public class ZapHelper {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(ZapHelper.class);
-	
+
 	private static final String ZAP_SUCCESS_RESPONSE = "OK";
 	private static final String ZAP_DEFAULT_CONTEXT_NAME = "Default Context";
-	
+
 	public static String extractResponse(ApiResponse response) {
 		return ((ApiResponseElement) response).getValue();
 	}
-	
+
 	public static void validateResponse(ApiResponse response, String operationDescription) {
 		String responseValue = extractResponse(response);
 		if (!responseValue.equals(ZAP_SUCCESS_RESPONSE)) {
@@ -33,11 +33,11 @@ public class ZapHelper {
 			throw new ZapClientException(message);
 		}
 	}
-	
+
 	public static void includeInContext(ClientApi api, String apiKey, AnalysisInfo analysisInfo) {
 		String[] context = analysisInfo.getContext();
 		LOGGER.debug("Including target '{}' in context.", Arrays.toString(context));
-		
+
 		try {
 			for (String contextUrl : context) {
 				if (isContextUrlRelative(contextUrl)) {
@@ -51,11 +51,11 @@ public class ZapHelper {
 			throw new ZapClientException(e);
 		}
 	}
-	
+
 	private static boolean isContextUrlRelative(String contextUrl) {
 		return !contextUrl.startsWith("http");
 	}
-	
+
 	private static String resolveContextUrl(String contextUrl, AnalysisInfo analysisInfo) {
 		String activeScanStartingPointUrl = analysisInfo.getActiveScanStartingPointUrl();
 		if (activeScanStartingPointUrl.endsWith("/")) {
@@ -66,18 +66,18 @@ public class ZapHelper {
 		}
 		return activeScanStartingPointUrl + "/" + contextUrl;
 	}
-	
+
 	public static void setTechnologiesInContext(ClientApi api, String apiKey, AnalysisInfo analysisInfo) {
 		String technologies = analysisInfo.getTechnologiesSeparatedByComma();
 		if (technologies == null) {
 			return;
 		}
 		LOGGER.debug("Setting technologies in context: {}.", technologies);
-		
+
 		try {
 			ApiResponse responseFromExcludingTechnologies = api.context.excludeAllContextTechnologies(apiKey, ZAP_DEFAULT_CONTEXT_NAME);
 			validateResponse(responseFromExcludingTechnologies, "Exclude all context technologies.");
-			
+
 			ApiResponse responseFromIncludingTechnologies = api.context.includeContextTechnologies(apiKey, ZAP_DEFAULT_CONTEXT_NAME, technologies);
 			validateResponse(responseFromIncludingTechnologies, "Exclude all context technologies.");
 		} catch (ClientApiException e) {
@@ -85,7 +85,7 @@ public class ZapHelper {
 			throw new ZapClientException(e);
 		}
 	}
-	
+
 	private ZapHelper() {}
 
 }
