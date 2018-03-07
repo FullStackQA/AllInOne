@@ -5,6 +5,7 @@ import java.util.Arrays;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 import com.security.zap.api.exception.ZapClientException;
 import com.security.zap.api.model.AnalysisInfo;
@@ -15,6 +16,9 @@ import org.zaproxy.clientapi.core.ClientApiException;
 
 =======
 
+=======
+
+>>>>>>> parent of 4d72c4a... Added the fix
 import com.security.zap.api.exception.ZapClientException;
 import com.security.zap.api.model.AnalysisInfo;
 
