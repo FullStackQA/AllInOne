@@ -12,7 +12,7 @@ import static com.utilities.PropertyReader.getPropertyValue;
 public class LoginTest extends BaseTest {
 
     @Test
-    public void LoginTest() throws InterruptedException {
+    public void LoginTest() throws Exception {
         LoginSteps steps=new LoginSteps();
         steps.Login(getPropertyValue("username"),getPropertyValue("password"));
     }
