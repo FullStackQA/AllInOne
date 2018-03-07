@@ -2,8 +2,7 @@ package com.security.zap.api.model;
 
 /**
  * Enumumerates the possible types of scans.
- * 
-
+ *
  */
 public enum ScanType {
 	

@@ -2,6 +2,7 @@ package com.utilities;
 
 
 import com.sun.javafx.PlatformUtil;
+import net.lightbody.bmp.BrowserMobProxy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
@@ -17,6 +18,7 @@ public  class DriverManager {
     private static WebDriver driver;
     private static final String CHROME = "chrome";
     static String sFileName = "target/harTest.har";
+    public static BrowserMobProxy proxy;
 
 
     public static String browserName = getPropertyValue("browser");
