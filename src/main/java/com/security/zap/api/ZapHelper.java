@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+<<<<<<< HEAD
 
 import com.security.zap.api.exception.ZapClientException;
 import com.security.zap.api.model.AnalysisInfo;
@@ -12,6 +13,12 @@ import org.zaproxy.clientapi.core.ApiResponseElement;
 import org.zaproxy.clientapi.core.ClientApi;
 import org.zaproxy.clientapi.core.ClientApiException;
 
+=======
+
+import com.security.zap.api.exception.ZapClientException;
+import com.security.zap.api.model.AnalysisInfo;
+
+>>>>>>> parent of 4d72c4a... Added the fix
 
 public class ZapHelper {
 

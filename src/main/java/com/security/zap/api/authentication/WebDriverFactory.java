@@ -49,6 +49,9 @@ public final class WebDriverFactory {
 =======
 	    
 	    return new FirefoxDriver(profile);
+<<<<<<< HEAD
+>>>>>>> parent of 4d72c4a... Added the fix
+=======
 >>>>>>> parent of 4d72c4a... Added the fix
 	}
 	
